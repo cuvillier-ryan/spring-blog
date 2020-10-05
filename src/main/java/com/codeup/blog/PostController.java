@@ -16,7 +16,7 @@ public class PostController {
     @GetMapping("/posts/{id}")
     @ResponseBody
     public String showOnePost(@PathVariable int id) {
-        return String.format("Here is post number %d", id)
+        return String.format("Here is post number %d", id);
     }
 
     @GetMapping("/posts/create")
