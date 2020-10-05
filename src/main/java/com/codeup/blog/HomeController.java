@@ -12,8 +12,8 @@ public class HomeController {
 
     @GetMapping("/")
     @ResponseBody
-    public String hello() {
-        return "This is the landing page!";
+    public String welcome() {
+        return "<h1>This is the landing page!</h1>";
     }
 
 
