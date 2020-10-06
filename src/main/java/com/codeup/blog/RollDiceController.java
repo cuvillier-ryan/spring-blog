@@ -14,22 +14,6 @@ public class RollDiceController {
         return "rollDice";
     }
 
-//    @GetMapping("/roll-dice/{guess}")
-//    public String showGuessForm(@PathVariable Integer guess, Model model) {
-//        int dieValue = (int) (Math.ceil(Math.random()*6));
-//        String msg = "";
-//        model.addAttribute("yourGuess", "");
-//        model.addAttribute("dieRoll", "");
-//        if (guess != null){
-//            msg = guess == dieValue ? "You guessed the correct value" : "You did not guess the right value, sorry!";
-//            model.addAttribute("yourGuess", "You guessed: " + guess);
-//            model.addAttribute("dieRoll", "The die rolled: " + dieValue);
-//        }
-//        model.addAttribute("msg",msg);
-//        return "rollDice";
-//    }
-
-
     //Trant's walkthrough example, this is easier to understand.
 
     @PostMapping("/roll-dice")
