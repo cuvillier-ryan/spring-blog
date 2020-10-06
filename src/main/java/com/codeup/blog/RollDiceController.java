@@ -30,18 +30,20 @@ public class RollDiceController {
 //    }
 
 
-    //Trant's walkthrough example
+    //Trant's walkthrough example, this is easier to understand.
+
     @PostMapping("/roll-dice")
-    public String showDiceResult(@RequestParam(name = "number") int number, Model model) {
+    public String showDiceResult(@RequestParam(name = "number") Integer number, Model model) {
         int numberRolled = (int) ((Math.random() * 6) + 1);
 
-        String msg = "you selected " + number + " and the number rolled was " + numberRolled + ".";
-        if (number == numberRolled) {
-            msg += " You won!";
+        String message = "You selected " + number + " and the number rolled was " + numberRolled + ".";
+        if (number.equals(numberRolled)) {
+            message += " You Won!";
         } else {
-            msg += "Sorry, guess again.";
+            message += " Oh well... try again!!";
         }
-        model.addAttribute("msg", msg);
+        model.addAttribute("message", message);
+
         return "rollDice";
     }
 }
