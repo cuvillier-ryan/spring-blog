@@ -7,7 +7,7 @@
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     height: 35px;
@@ -17,14 +17,8 @@
     text-align: center;
 }
 
-.footer > .navbar-nav > li > a {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}
-
-.footer > .navbar {
-    min-height: 32px !important
-}
+.footer > .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.footer > .navbar {min-height:32px !important}
 
 .topnav {
     margin-bottom: .5em;

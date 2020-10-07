@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show Post</title>
+    <title>Show Post List</title>
     <link th:replace="partials/links :: links"/>
 </head>
 <body>
@@ -10,12 +10,15 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <show_post th:if="${post}">
-        <h2 th:text="${post.title}"></h2>
-        <p th:text="${post.body}"></p>
-        <form style="display: inline" th:action="@{'/ads/edit/' + ${post.id}}"><button>Edit</button></form>
-        <form style="display: inline" th:action="@{'/ads/delete/' + ${post.id}}"><button>Delete</button></form>
-    </show_post>
+    <show_posts th:if="${postList}">
+        <div th:each="item : ${postList}">
+            <form th:action="@{'/posts/' + ${item.id}}">
+                <h2 th:text="${item.title}"></h2>
+                <p th:text="${item.body}"></p>
+                <button>View</button>
+            </form>
+        </div>
+    </show_posts>
 </main>
 
 <div th:replace="partials/footer_nav :: footer_nav"></div>

@@ -2,8 +2,8 @@ package models;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "ads")
+@Entity
+@Table(name = "ads")
 public class Ad {
 
     @Id

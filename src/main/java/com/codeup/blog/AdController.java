@@ -2,6 +2,7 @@ package com.codeup.blog;
 
 
 import models.Ad;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,8 @@ import repositories.AdRepository;
 
 @Controller
 public class AdController {
-    private final AdRepository adRepo;
+    @Autowired
+    AdRepository adRepo;
 
     public AdController(AdRepository adRepo) {
         this.adRepo = adRepo;
