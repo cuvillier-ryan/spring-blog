@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View Ad</title>
-    <div th:replace="partials/links :: links"></div>
+    <title>Show A Post</title>
+    <link th:replace="partials/links :: links"/>
 </head>
 <body>
+<header th:replace="partials/header :: header"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <h2 th:text="${ad.title}"></h2>
-    <p th:text="${ad.description}"></p>
-    <form style="display: inline" th:action="@{'/ads/edit/' + ${ad.id}}">
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.body}"></p>
+    <form style="display: inline" th:action="@{'/posts/edit/' + ${post.id}}">
         <button>Edit</button>
     </form>
-    <form style="display: inline" th:action="@{'/ads/delete/' + ${ad.id}}">
-        <button>Delete</button>
+    <form style="display: inline" th:action="@{'/posts/delete/' + ${post.id}}">
+        <button>delete</button>
     </form>
 </main>
 
-<div th:replace="partials/scripts :: scripts"></div>
+<footer th:replace="partials/footer :: footer"></footer>
+<scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>
