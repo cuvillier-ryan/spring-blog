@@ -18,65 +18,69 @@ public class PostController {
         this.postRepo = postRepo;
     }
 
-    @GetMapping("/post")
-    public String showPosts(Model model) {
-        List<Post> postList = new ArrayList<>();
-        postList.add(new Post("First Post", "This is the body of the first test post."));
-        postList.add(new Post("Second Post", "This is the body of the second test post."));
-        model.addAttribute("postList", postList);
+    @RequestMapping(path = "/posts", method = RequestMethod.GET)
+    public String showAllPosts(Model model) {
+        model.addAttribute("posts", postRepo.findAll());
         return "posts/index";
     }
 
-    @GetMapping("/post/{id}")
-    public String showPost(@PathVariable Integer id, Model model) {
-        Post post = new Post("A Single Post", "This is the body of a single test post.");
+    @GetMapping("/posts/{id}")
+    public String showOnePost(@PathVariable long id, Model model) {
+        Post post = postRepo.getAdById(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
-    @GetMapping("/post/create")
-    public String showCreatePost() {
+    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
+    public String createPostForm() {
         return "posts/create";
     }
 
-    @PostMapping("/posts/create")
+    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String createPost(@RequestParam(name = "title") String title,
                              @RequestParam(name = "body") String body,
                              Model model) {
-        Post post = new Post(title, body);
-        postRepo.save(post);
-        return "redirect:/ads/" + post.getId();
-    }
-
-    @GetMapping("/posts/delete/{id}")
-    public String deletePost(@PathVariable long id, Model model) {
-        Post post = postRepo.getPostById(id);
-        if (post != null) {
-            postRepo.delete(post);
-        }
-        return "posts/index";
-    }
-
-    @GetMapping("/posts/edit/{id}")
-    public String editPost(@PathVariable long id, Model model) {
-        Post post = postRepo.getPostById(id);
-        if (post != null) {
-            postRepo.delete(post);
-            return "redirect:/post/index";
-        }
-        model.addAttribute("post", post);
-        return "posts/index";
-    }
-
-    @PostMapping("/posts/edit")
-    public String updateAd(@RequestParam(name = "id") long id,
-                           @RequestParam(name = "title") String title,
-                           @RequestParam(name = "body") String body) {
         Post post = new Post();
-        post.setId(id);
         post.setTitle(title);
         post.setBody(body);
         postRepo.save(post);
-        return "redirect:/ads/" + post.getId();
+        return "redirect:/posts/" + post.getId();
+    }
+
+
+    @GetMapping("/posts/delete/{id}")
+    public String deletePost(@PathVariable long id, Model model) {
+        Post post = postRepo.getAdById(id);
+        if (post != null) {
+            postRepo.delete(post);
+        }
+        return "redirect:/posts";
+    }
+
+
+    @GetMapping("/posts/edit/{id}")
+    public String showEditPost(@PathVariable long id, Model model) {
+        Post post = postRepo.getAdById(id);
+        if (post == null) {
+            return "redirect:/posts/index";
+        }
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+
+    @PostMapping("/posts/edit")
+    public String updatePost(@RequestParam(name = "id") long id,
+                             @RequestParam(name = "title") String title,
+                             @RequestParam(name = "body") String body,
+                             Model model) {
+        Post post = postRepo.getAdById(id);
+        if (post == null) {
+            return "redirect:/posts/index";
+        }
+        post.setTitle(title);
+        post.setBody(body);
+        postRepo.save(post);
+        return "redirect:/posts/" + post.getId();
     }
 }

@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create Ad</title>
-    <div th:replace="partials/links :: links"></div>
+    <title>Create A Post</title>
+    <link th:replace="partials/links :: links"/>
 </head>
 <body>
+<header th:replace="partials/header :: header"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <form action="/ads/create" method="post">
-        <label for="title">Enter Ad Title: </label>
-        <input type="text" id="title" name="title"><br>
-        <label for="description">Type in the ad text:</label><br>
-        <textarea name="description" id="description" cols="72" rows="5"></textarea><br>
-        <button>Submit</button>
+    <form action="/posts/create" method="post">
+        <label for="title">Enter Post Title: </label> <br>
+        <input type="text" id="title" name="title"/> <br>
+        <label for="body">Enter your post: </label> <br>
+        <textarea name="body" id="body" cols="72" rows="4"></textarea> <br>
+        <button type="submit">Submit</button>
     </form>
 </main>
 
-<div th:replace="partials/scripts :: scripts"></div>
+<footer th:replace="partials/footer :: footer"></footer>
+<scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>
