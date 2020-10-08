@@ -35,7 +35,7 @@ public class PostController {
     }
 
     @GetMapping("/post/create")
-    public String showCreatePost () {
+    public String showCreatePost() {
         return "posts/create";
     }
 
@@ -49,17 +49,23 @@ public class PostController {
     }
 
     @GetMapping("/posts/delete/{id}")
-    public String deleteAd(@PathVariable long id, Model model) {
+    public String deletePost(@PathVariable long id, Model model) {
         Post post = postRepo.getPostById(id);
-        postRepo.delete(post);
-        return "redirect:/ads";
+        if (post != null) {
+            postRepo.delete(post);
+        }
+        return "posts/index";
     }
 
     @GetMapping("/posts/edit/{id}")
-    public String editAd(@PathVariable long id, Model model) {
+    public String editPost(@PathVariable long id, Model model) {
         Post post = postRepo.getPostById(id);
+        if (post != null) {
+            postRepo.delete(post);
+            return "redirect:/post/index";
+        }
         model.addAttribute("post", post);
-        return "ads/edit";
+        return "posts/index";
     }
 
     @PostMapping("/posts/edit")

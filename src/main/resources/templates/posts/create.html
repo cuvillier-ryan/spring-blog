@@ -10,15 +10,13 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <show_posts th:if="${postList}">
-        <div th:each="item : ${postList}">
-            <form th:action="@{'/posts/' + ${item.id}}">
-                <h2 th:text="${item.title}"></h2>
-                <p th:text="${item.body}"></p>
-                <button>View</button>
-            </form>
-        </div>
-    </show_posts>
+    <form action="/posts/create" method="post">
+        <label for="title">Enter Ad Title</label><br>
+        <input type="text" id="title" name="title"/><br>
+        <label for="body">Enter your post: </label> <br>
+        <textarea name="body" id="body" cols="72" rows="4"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
 </main>
 
 <div th:replace="partials/footer_nav :: footer_nav"></div>
