@@ -38,7 +38,6 @@ public class PostController {
         Post post = new Post();
         post.setTitle("This is the title to the Post.");
         post.setBody("This is the body to the hardcoded Post.");
-//        post.sey(new ArrayList<AdCategory>());
         post.setUser(userRepo.getOne(1L));
         postRepo.save(post);
         return "redirect:/posts";

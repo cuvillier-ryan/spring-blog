@@ -17,6 +17,9 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    @Column(nullable = false)
+    private String password;
+
     //User can have many ads
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Ad> ads;
@@ -24,6 +27,7 @@ public class User {
     //User can have many posts
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
+
 
     public User() {
     }
@@ -35,10 +39,11 @@ public class User {
 //        this.ads = ads;
 //    }
 
-    public User(long id, String email, String username, List<Post> posts) {
+    public User(long id, String email, String username, String password,List<Post> posts) {
         this.id = id;
         this.email = email;
         this.username = username;
+        this.password = password;
         this.posts = posts;
     }
 
@@ -64,6 +69,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Ad> getAds() {
