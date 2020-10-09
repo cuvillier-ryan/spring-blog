@@ -2,18 +2,17 @@ package com.codeup.blog.controllers;
 
 
 import com.codeup.blog.models.Ad;
+import com.codeup.blog.repositories.AdRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.codeup.blog.repositories.AdRepository;
 
 @Controller
 public class AdController {
-
-    public final AdRepository adRepo;
+    private final AdRepository adRepo;
 
     public AdController(AdRepository adRepo) {
         this.adRepo = adRepo;
