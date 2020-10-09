@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit a Post</title>
-    <link th:replace="partials/links :: links"/>
+    <title>Edit Ad</title>
+    <div th:replace="partials/links :: links"></div>
 </head>
 <body>
 <header th:replace="partials/header :: header"></header>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <form action="/posts/edit" method="post">
-        <input style="visibility: hidden" type="text" name="id" th:value="${post.id}"/>
-        <input style="visibility: hidden" type="text" name="fred" value="fred"/>
-        <label for="title">Enter Post Title: </label> <br>
-        <input type="text" id="title" name="title" th:value="${post.title}"/> <br>
-        <label for="body">Enter your post: </label> <br>
-        <textarea name="body" id="body" cols="72" rows="4" th:text="${post.body}"></textarea> <br>
-        <button type="submit">Submit</button>
+    <form action="/ads/edit" method="post">
+        <input type="hidden" th:value="${ad.id}" name="id"/>
+        <label for="title">Ad Title: </label>
+        <input type="text" id="title" name="title" th:value="${ad.title}"><br>
+        <label for="description">Ad text:</label><br>
+        <textarea name="description" id="description" cols="72" rows="5" th:text="${ad.description}"></textarea><br>
+        <button>Submit</button>
     </form>
 </main>
 
 <footer th:replace="partials/footer :: footer"></footer>
-<scripts th:replace="partials/scripts :: scripts"></scripts>
+<div th:replace="partials/scripts :: scripts"></div>
 </body>
 </html>
