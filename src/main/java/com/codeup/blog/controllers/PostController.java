@@ -2,19 +2,22 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.repositories.PostRepository;
+import com.codeup.blog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PostController {
-    private final PostRepository postRepo;
 
-    public PostController(PostRepository postRepo) {
+    //Dependency Injection
+
+    private final PostRepository postRepo;
+    private final UserRepository userRepo;
+
+    public PostController(PostRepository postRepo, UserRepository userRepo) {
         this.postRepo = postRepo;
+        this.userRepo = userRepo;
     }
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
@@ -28,6 +31,17 @@ public class PostController {
         Post post = postRepo.getAdById(id);
         model.addAttribute("post", post);
         return "posts/show";
+    }
+
+    @GetMapping("posts/hardcoded/create")
+    public String createHardcodedAd() {
+        Post post = new Post();
+        post.setTitle("This is the title to the Post.");
+        post.setBody("This is the body to the hardcoded Post.");
+//        post.sey(new ArrayList<AdCategory>());
+        post.setUser(userRepo.getOne(1L));
+        postRepo.save(post);
+        return "redirect:/posts";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)

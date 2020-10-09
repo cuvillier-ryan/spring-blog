@@ -17,17 +17,29 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    //User can have many ads
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Ad> ads;
+
+    //User can have many posts
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
     public User() {
     }
 
-    public User(long id, String email, String username, List<Ad> ads) {
+//    public User(long id, String email, String username, List<Ad> ads) {
+//        this.id = id;
+//        this.email = email;
+//        this.username = username;
+//        this.ads = ads;
+//    }
+
+    public User(long id, String email, String username, List<Post> posts) {
         this.id = id;
         this.email = email;
         this.username = username;
-        this.ads = ads;
+        this.posts = posts;
     }
 
     public long getId() {
@@ -60,6 +72,14 @@ public class User {
 
     public void setAds(List<Ad> ads) {
         this.ads = ads;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
 
