@@ -31,8 +31,10 @@ public class AdController {
         return "ads/show";
     }
 
+    // Updated with Form Model binding syntax.
     @GetMapping("/ads/create")
-    public String showCreateView() {
+    public String showCreateView(Model model) {
+        model.addAttribute("ad", new Ad());
         return "ads/create";
     }
 
