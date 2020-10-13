@@ -39,7 +39,7 @@ public class User {
 //        this.ads = ads;
 //    }
 
-    public User(long id, String email, String username, String password,List<Post> posts) {
+    public User(long id, String email, String username, String password, List<Post> posts) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -70,6 +70,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
