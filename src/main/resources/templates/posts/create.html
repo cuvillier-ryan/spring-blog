@@ -10,7 +10,8 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <main class="container">
-    <form action="/posts/create" method="post">
+    <form th:action="@{/posts/create}" th:method="post"
+    th:object="${ad}">
         <label for="title">Enter Ad Title</label><br>
         <input type="text" id="title" name="title"/><br>
         <label for="body">Enter your post: </label> <br>
