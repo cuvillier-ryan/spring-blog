@@ -28,11 +28,11 @@ public class AdController {
         return "ads/show";
     }
 
-    // Updated with Form Model binding syntax.
+    // Refactored with Form Model binding syntax.
     @GetMapping("/ads/create")
     public String showCreateForm(Model model) {
         model.addAttribute("ad", new Ad());
-        return "ads/create";
+        return "/ads/create";
     }
 
     @PostMapping("/ads/create")
