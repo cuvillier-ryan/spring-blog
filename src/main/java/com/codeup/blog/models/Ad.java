@@ -4,17 +4,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "ads")
+@Table(name="ads")
 public class Ad {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column
     private String description;
 
     @ManyToOne
@@ -24,8 +23,8 @@ public class Ad {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="ads_categories",
-            joinColumns = {@JoinColumn(name="ad_id")},
-            inverseJoinColumns = {@JoinColumn(name="category_id")}
+            joinColumns={@JoinColumn(name="ad_id")},
+            inverseJoinColumns={@JoinColumn(name="category_id")}
     )
     private List<AdCategory> categories;
 
@@ -36,6 +35,7 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
+
 
     public long getId() {
         return id;
@@ -61,11 +61,11 @@ public class Ad {
         this.description = description;
     }
 
-    public User getOwner(){
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner){
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 

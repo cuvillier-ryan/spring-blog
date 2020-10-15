@@ -1,11 +1,9 @@
 package com.codeup.blog.models;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.net.UnknownServiceException;
 
 @Entity
-@Table(name = "posts")
+@Table(name="posts")
 public class Post {
 
     @Id
