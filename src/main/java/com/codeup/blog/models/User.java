@@ -65,7 +65,7 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
+    public Ad getEmail() {
         return email;
     }
 
