@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/sign-up")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return "/users/signup";
+        return "/users/sign-up";
     }
     // What happens when a new user submits the register form?
     @PostMapping("/sign-up")
