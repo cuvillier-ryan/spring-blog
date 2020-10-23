@@ -16,14 +16,8 @@
     /*text-align: center;*/
 }
 
-.footer > .navbar-nav > li > a {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}
-
-.footer > .navbar {
-    min-height: 32px !important
-}
+.footer > .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.footer > .navbar {min-height:32px !important}
 
 .di-num {
     height: 100px;
