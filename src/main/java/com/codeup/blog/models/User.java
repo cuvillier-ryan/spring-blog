@@ -25,9 +25,12 @@ public class User {
 
     // We would also add this property to the constructor, copy constructor, and add getters and setters for it, if we wanted to store the registration
 
+
+    //Creating a List from the Post object model to create a relationship with the User model.
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    //Creating a List from the Ads object model to create a relationship with the User model.
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Ad> ads;
 
